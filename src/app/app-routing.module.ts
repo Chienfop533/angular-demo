@@ -1,11 +1,12 @@
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
+import { LayoutComponent } from './theme/layout/layout.component';
 
 const routes: Routes = [
   {
     path:'',
-    component:AppComponent,
+    component:LayoutComponent,
   },
   { path: '', redirectTo: '', pathMatch: 'full' },
   { path: '**', redirectTo: '' },
