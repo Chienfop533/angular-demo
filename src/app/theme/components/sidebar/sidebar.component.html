@@ -15,8 +15,8 @@
         <ng-container *ngFor="let item of navigation">
           <li  [class.active]="item.isSelected">
             <ng-container  *ngIf="item.childrens?.length > 0; else elseTemplate"  >
-              <a  data-toggle="collapse" href="#"  [class.has-arrow]="item.childrens.length > 0"
-                class="waves-effect waves-dark " [attr.aria-expanded]="item.isSelected" [class.collapsed]="!item.isSelected">
+              <a  data-toggle="collapse" href="#"  [class.has-arrow]="item.childrens.length > 0" [routerLinkActive]="item.url!=''?'active':''   "
+                class="waves-effect waves-dark " [attr.aria-expanded]="item.isSelected" [class.collapsed]="!item.isSelected" (click)="openMenu(item)">
                 <i class="{{item.icon}}"></i>
                 <span class="hide-menu"> {{item.name}} </span>
               </a>
@@ -30,9 +30,9 @@
             </ng-template>
 
 
-            <ul  class="collapse" [class.show]="item.isSelected"  >
+            <ul  class="collapse" [class.show]="item.isSelected">
               <ng-container *ngFor="let child of item.childrens">
-                <li *ngIf="child.hasPermission==true">
+                <li>
                   <a [routerLink]="child.url" [routerLinkActive]="child.url!=''?'active':''">
                     <i [class]="child.icon"></i> {{ child.name }}
                   </a>

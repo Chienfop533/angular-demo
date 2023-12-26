@@ -1,5 +1,4 @@
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
 import { LayoutComponent } from './theme/layout/layout.component';
 import { ProjectsComponent } from './pages/project/project.component';
@@ -14,6 +13,11 @@ const routes: Routes = [
         path: 'project',
         component: ProjectsComponent
       },
+      {
+        path: 'category',
+        loadChildren: () => import('./pages/category/category.module')
+          .then(m => m.CategoryModule),
+      }
     ]
   },
   { path: '**', redirectTo: '' },
