@@ -11,30 +11,30 @@ export class SidebarComponent implements OnInit {
     this.navigation = [
       {
         id: "1",
-        name: "Dự Án",
+        name: "Dự án",
         url: "/project",
         childrens: []
       },
       {
         id: "2",
-        name: "Công nợ",
+        name: "Danh mục",
         url: "",
         childrens: [
           {
             id: "21",
-            name: "Hợp đồng",
-            url: "debt/contract"
+            name: "Bản đồ",
+            url: "category/map"
           },
           {
             id: "22",
-            name: "Giấy báo có",
-            url: "debt/credit-note"
+            name: "Dự án",
+            url: "category/project"
           },
 
           {
             id: "23",
-            name: "Khách hàng",
-            url: "/debt/customer"
+            name: "Lô đất",
+            url: "category/state"
           }
         ]
       },
