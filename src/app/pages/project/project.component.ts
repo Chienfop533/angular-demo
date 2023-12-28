@@ -11,6 +11,7 @@ import { ProjectActionComponent } from "../../views/project-action/project-actio
 export class ProjectsComponent implements OnInit {
   @ViewChild("modalChild", { static: false }) modalChild: ProjectActionComponent;
   dataSource: any;
+  dataRowEdit: any;
   constructor() {}
   ngOnInit() {
     this.dataSource = [{
@@ -136,7 +137,15 @@ export class ProjectsComponent implements OnInit {
   }]
   }
   onRowClick(e) {
-    console.log(e.data);
-
+    this.dataRowEdit = e.data
+  }
+  fnAdd() {
+    this.modalChild.openModal()
+  }
+  fnEdit() {
+    this.modalChild.openModal(this.dataRowEdit)
+  }
+  fnDelete() {
+    this.dataSource = this.dataSource.filter(item => item.ID != this.dataRowEdit.ID)
   }
 }

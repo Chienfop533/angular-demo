@@ -10,6 +10,12 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 export class ProjectActionComponent implements OnInit {
   @ViewChild('lgModal', { static: false }) childModal?: ModalDirective;
   ngOnInit() {
+  }
+  openModal(data?: any) {
+    this.childModal.show();
+    console.log(data);
+  }
+  fnSave() {
 
   }
 }

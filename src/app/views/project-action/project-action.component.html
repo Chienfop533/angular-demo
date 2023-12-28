@@ -1,19 +1,240 @@
-<button type="button" class="btn btn-primary" (click)="lgModal.show()">Static modal</button>
-
 <div class="modal fade" bsModal #lgModal="bs-modal" [config]="{backdrop: 'static'}"
      tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 id="dialog-static-name" class="modal-title pull-left">Static modal</h4>
-        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="lgModal.hide()">
-          <span aria-hidden="true" class="visually-hidden">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        This is static modal, backdrop click will not close it.
-        Click <b>&times;</b> to close modal.
+     <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 id="dialog-sizes-name1" class="modal-title pull-left">
+            <b>{{ "Thông tin hợp đồng" | uppercase }}</b>
+          </h4>
+          <button
+            type="button"
+            class="btn-close close pull-right"
+            (click)="lgModal.hide()"
+            aria-label="Close"
+          >
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="your-action" (submit)="fnSave()">
+            <dx-form
+              labelLocation="left"
+              #targetForm
+              id="form"
+            >
+              <dxi-item itemType="group" [colCount]="2">
+                <dxi-item
+                  dataField="code"
+                  [label]="{ text: 'Mã hợp đồng' }"
+                  [editorOptions]="{
+                    stylingMode: 'outlined',
+                    placeholder: 'Nhập mã hợp đồng',
+                  }"
+
+                >
+                  <dxi-validation-rule type="required" message="Bắt buộc nhập">
+                  </dxi-validation-rule>
+                </dxi-item>
+                <dxi-item
+                dataField="no"
+                [label]="{ text: 'Số hợp đồng' }"
+                [editorOptions]="{
+                  stylingMode: 'outlined',
+                  placeholder: 'Nhập số hợp đồng',
+                  readOnly:  true
+                }"
+              >
+                <dxi-validation-rule type="required" message="Bắt buộc nhập">
+                </dxi-validation-rule>
+              </dxi-item>
+                <dxi-item
+                  dataField="customerName"
+                  [label]="{ text: 'Khách hàng' }"
+                  [editorOptions]="{
+                    stylingMode: 'outlined',
+                    placeholder: 'Chọn khách hàng',
+                    readOnly: true
+                  }"
+                >
+                </dxi-item>
+
+                <dxi-item
+                  dataField="content"
+                  [colSpan]="2"
+                  [label]="{ text: 'Nội dung' }"
+                  [editorOptions]="{
+                    stylingMode: 'outlined',
+                    placeholder: 'Nhập nội dung',
+                    readOnly: true
+                  }"
+                >
+                </dxi-item>
+                <dxi-item
+                  dataField="signedDate"
+                  [label]="{ text: 'Ngày ký' }"
+                  editorType="dxDateBox"
+                  [editorOptions]="{
+                    openOnFieldClick: true,
+                    stylingMode: 'outlined',
+                    placeholder: 'Nhập ngày ký',
+                    displayFormat: 'dd/MM/yyyy',
+                    type: 'date',
+                    invalidDateMessage: 'Không đúng định dạng',
+                    width: 'auto',
+                    readOnly: true
+                  }"
+                >
+                </dxi-item>
+                <dxi-item
+                  dataField="expireDate"
+                  [label]="{ text: 'Ngày hết hạn' }"
+                  editorType="dxDateBox"
+                  [editorOptions]="{
+                    openOnFieldClick: true,
+                    stylingMode: 'outlined',
+                    placeholder: 'Nhập ngày hết hạn',
+                    displayFormat: 'dd/MM/yyyy',
+                    type: 'date',
+                    invalidDateMessage: 'Không đúng định dạng',
+                    width: 'auto',
+                    readOnly: true
+                  }"
+                >
+                </dxi-item>
+
+                <dxi-item
+                  dataField="effectiveDate"
+                  [label]="{ text: 'Ngày hiệu lực' }"
+                  editorType="dxDateBox"
+                  [editorOptions]="{
+                    openOnFieldClick: true,
+                    stylingMode: 'outlined',
+                    placeholder: 'Nhập ngày hiệu lực',
+                    displayFormat: 'dd/MM/yyyy',
+                    type: 'date',
+                    invalidDateMessage: 'Không đúng định dạng',
+                    width: 'auto',
+                    readOnly: true
+                  }"
+                >
+                </dxi-item>
+                <dxi-item
+                dataField="eOfficeLink"
+                [colSpan]="2"
+                [label]="{ text: 'eOffice Link' }"
+                [editorOptions]="{
+                  stylingMode: 'outlined',
+                  placeholder: 'Nhập eOffice Link'
+                }"
+              >
+              </dxi-item>
+                <dxi-item
+                  dataField="bank"
+                  [label]="{ text: 'Ngân hàng' }"
+                  [editorOptions]="{
+                    stylingMode: 'outlined',
+                    placeholder: 'Ngân hàng'
+                  }"
+                >
+                </dxi-item>
+                <dxi-item
+                  dataField="bankAccount"
+                  [label]="{ text: 'Số tài khoản' }"
+                  [editorOptions]="{
+                    stylingMode: 'outlined',
+                    placeholder: 'Nhập số tài khoản'
+                  }"
+                >
+                </dxi-item>
+                <dxi-item   [colSpan]="2"
+                dataField="payMethod" editorType="dxSelectBox"
+                [label]="{ text: 'Phương thức thanh toán' }"
+                [editorOptions]="{
+                  stylingMode: 'outlined',
+                  placeholder: 'Phương thức thanh toán',
+                  valueExpr: 'id',
+                  displayExpr: 'title',
+                  searchExpr: 'title',
+                  searchEnabled: true,
+                  showClearButton: true
+                }"
+              >
+              </dxi-item>
+
+                <dxi-item
+                  dataField="lands"
+                  [colSpan]="2"
+                  [label]="{ text: 'Bất động sản cho thuê' }"
+                  editorType="dxTagBox"
+                  [editorOptions]="{
+                    displayExpr: 'realAssetCode',
+                    searchExpr: 'realAssetCode',
+                    valueExpr: 'realAssetCode',
+                    searchEnabled: true,
+                    value: '',
+                    stylingMode: 'outlined',
+                    placeholder: 'Bất động sản cho thuê',
+                    multiline: true,
+                    showSelectionControls: true,
+                    readOnly: true,
+                    height: 40
+                  }"
+                >
+                </dxi-item>
+
+                <dxi-item
+                  dataField="note"
+                  [colSpan]="2"
+                  [label]="{ text: 'Ghi chú' }"
+                  cssClass="text-note"
+                  [editorOptions]="{
+                    stylingMode: 'outlined',
+                    placeholder: 'Nhập ghi chú'
+                  }"
+                >
+                </dxi-item>
+                <dxi-item
+                  dataField="term"
+                  [colSpan]="2"
+                  editorType="dxTextArea"
+                  [label]="{ text: 'Điều khoản' }"
+                  cssClass="text-note"
+                  [editorOptions]="{
+                    placeholder: 'Vui lòng nhập điều khoản',
+                    stylingMode: 'outlined',
+                    height: 60
+                  }"
+                >
+                </dxi-item>
+              </dxi-item>
+            </dx-form>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="text-right">
+                <div>
+                  <button
+                    class="btn btn-bcm waves-effect waves-light mr-1"
+                    type="button"
+                    (click)="lgModal.hide()"
+                  >
+                    <span class="btn-label"><i class="fa fa-times"></i></span>Đóng
+                  </button>
+                  <button
+                    class="btn btn-bcm waves-effect waves-light mr-1"
+                    type="button"
+                    data-size="s"
+                    data-color=bcm
+                  >
+                    <span class="btn-label"><i class="fa fa-check"></i></span>Lưu
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 </div>
