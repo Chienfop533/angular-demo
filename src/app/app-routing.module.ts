@@ -11,7 +11,8 @@ const routes: Routes = [
     children:[
       {
         path: 'project',
-        component: ProjectsComponent
+        loadChildren: () => import('./pages/project/project.module')
+          .then(m => m.ProjectModule),
       },
       {
         path: 'category',

@@ -4,14 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './theme/theme.module';
 
-
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ThemeModule
+    ThemeModule,
   ],
   bootstrap: [AppComponent]
 
