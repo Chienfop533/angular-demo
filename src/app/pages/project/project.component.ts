@@ -147,5 +147,9 @@ export class ProjectsComponent implements OnInit {
   }
   fnDelete() {
     this.dataSource = this.dataSource.filter(item => item.ID != this.dataRowEdit.ID)
+    this.dataRowEdit = null
+  }
+  loadData(data) {
+    this.dataSource = [...this.dataSource, data]
   }
 }

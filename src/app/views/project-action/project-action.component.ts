@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild,  } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild,  } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -9,13 +9,25 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 })
 export class ProjectActionComponent implements OnInit {
   @ViewChild('lgModal', { static: false }) childModal?: ModalDirective;
+  @Output() sendData = new EventEmitter();
+  entity: any = {}
+  newValue: any = {}
+  submitButtonOptions = {
+    text: "Submit the Form",
+    useSubmitBehavior: true
+}
   ngOnInit() {
   }
   openModal(data?: any) {
     this.childModal.show();
-    console.log(data);
+    this.entity = data
   }
   fnSave() {
-
+    this.sendData.emit(this.newValue)
+    this.childModal.hide()
   }
+  onFieldDataChanged(e) {
+    this.newValue = {...this.newValue, [e.dataField]: e.value}
+  }
+
 }
