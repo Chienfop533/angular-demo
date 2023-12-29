@@ -12,10 +12,6 @@ export class ProjectActionComponent implements OnInit {
   @Output() sendData = new EventEmitter();
   entity: any = {}
   newValue: any = {}
-  submitButtonOptions = {
-    text: "Submit the Form",
-    useSubmitBehavior: true
-}
   ngOnInit() {
   }
   openModal(data?: any) {
@@ -25,6 +21,11 @@ export class ProjectActionComponent implements OnInit {
   fnSave() {
     this.sendData.emit(this.newValue)
     this.childModal.hide()
+    this.entity = {}
+  }
+  fnCancel() {
+    this.childModal.hide()
+    this.entity = {}
   }
   onFieldDataChanged(e) {
     this.newValue = {...this.newValue, [e.dataField]: e.value}

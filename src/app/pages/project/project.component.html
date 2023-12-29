@@ -13,21 +13,13 @@
     </div>
     <dx-data-grid
       id="gridContainer"
+      keyExpr="ID"
       [dataSource]="dataSource"
       [showBorders]="true"
       (onRowClick)="onRowClick($event)"
     >
       <dxo-selection mode="single"></dxo-selection>
       <dxo-filter-row [visible]="true"></dxo-filter-row>
-      <dxo-editing
-        [allowUpdating]="false"
-        [allowDeleting]="false"
-        [useIcons]="true"
-      >
-        <dxo-texts
-          confirmDeleteMessage=" Bạn có chắc chắn muốn xóa bản ghi này không?"
-        ></dxo-texts>
-      </dxo-editing>
       <dxo-paging [pageSize]="10"></dxo-paging>
       <dxo-pager
         [showPageSizeSelector]="true"
@@ -39,7 +31,7 @@
           )"
       >
       </dxo-pager>
-      <dxi-column dataField="CompanyName" dataType="number" alignment="left">
+      <dxi-column dataField="CompanyName" dataType="number" alignment="left" >
       </dxi-column>
       <dxi-column dataField="City" dataType="string"> </dxi-column>
       <dxi-column dataField="State" dataType="string"> </dxi-column>

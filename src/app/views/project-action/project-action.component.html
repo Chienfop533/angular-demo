@@ -26,7 +26,6 @@
         <form>
           <dx-form
             labelLocation="left"
-            #targetForm
             id="form"
             [(formData)]="entity"
             (onFieldDataChanged)="onFieldDataChanged($event)"
@@ -96,7 +95,7 @@
                 <button
                   class="btn btn-bcm waves-effect waves-light mr-1"
                   type="button"
-                  (click)="lgModal.hide()"
+                  (click)="fnCancel()"
                 >
                   <span class="btn-label"><i class="fa fa-times"></i></span>Đóng
                 </button>
