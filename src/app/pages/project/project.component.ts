@@ -141,6 +141,7 @@ export class ProjectsComponent implements OnInit {
   }
   fnAdd() {
     this.modalChild.openModal()
+    this.dataRowEdit = null
   }
   fnEdit() {
     this.modalChild.openModal(this.dataRowEdit)
@@ -150,6 +151,9 @@ export class ProjectsComponent implements OnInit {
     this.dataRowEdit = null
   }
   loadData(data) {
-    this.dataSource = [...this.dataSource, data]
+    if(!this.dataRowEdit) {
+      const newData = {...data, ID: Math.floor(Math.random()*1000)}
+      this.dataSource = [...this.dataSource, newData]
+    }
   }
 }
