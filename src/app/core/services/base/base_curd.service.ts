@@ -19,7 +19,7 @@ export class BaseCURDService<T>
   }
 
   addFromFormData(formData: FormData) {
-    return this.http.post(`${this.baseUrl}/${this._path}`, formData);
+    return this.http.post(`${this.baseUrl}/${this._path}/add`, formData);
   }
 
   // Lấy danh sách tất cả tài nguyên

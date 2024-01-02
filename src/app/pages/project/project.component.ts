@@ -33,8 +33,15 @@ export class ProjectsComponent implements OnInit {
   }
   loadData(data) {
     if(!this.dataRowEdit) {
-      const newData = {...data, ID: Math.floor(Math.random()*1000)}
-      this.dataSource = [...this.dataSource, newData]
+      this.dataSource = [...this.dataSource, data]
+    } else {
+      this.dataSource = this.dataSource.map(item => {
+        if(item.id == this.dataRowEdit.id) {
+          return data
+        } else {
+          return item
+        }
+      })
     }
   }
 

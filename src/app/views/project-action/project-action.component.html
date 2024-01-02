@@ -23,63 +23,64 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form action="your-action" (submit)="fnSave()">
           <dx-form
             labelLocation="left"
             id="form"
             [(formData)]="entity"
-            (onFieldDataChanged)="onFieldDataChanged($event)"
           >
             <dxi-item itemType="group" [colCount]="2">
               <dxi-item
-                dataField="CompanyName"
-                [label]="{ text: 'Company Name' }"
+                dataField="brand"
+                [label]="{ text: 'Brand' }"
                 [editorOptions]="{
                     stylingMode: 'outlined',
-                    placeholder: 'Company name...',
+                    placeholder: 'Brand...',
                   }"
               >
                 <dxi-validation-rule type="required" message="Bắt buộc nhập">
                 </dxi-validation-rule>
               </dxi-item>
               <dxi-item
-                dataField="City"
-                [label]="{ text: 'City' }"
+                dataField="title"
+                [label]="{ text: 'Title' }"
                 [editorOptions]="{
                   stylingMode: 'outlined',
-                  placeholder: 'City...',
+                  placeholder: 'Title...',
                 }"
               >
                 <dxi-validation-rule type="required" message="Bắt buộc nhập">
                 </dxi-validation-rule>
               </dxi-item>
               <dxi-item
-                dataField="State"
-                [label]="{ text: 'State' }"
+                dataField="category"
+                [label]="{ text: 'Category' }"
                 [editorOptions]="{
                     stylingMode: 'outlined',
-                    placeholder: 'State...',
+                    placeholder: 'Category...',
                   }"
               >
               </dxi-item>
 
               <dxi-item
-                dataField="Phone"
+                dataField="price"
                 [colSpan]="2"
-                [label]="{ text: 'Phone' }"
+                [label]="{ text: 'Price' }"
+                editorType="dxNumberBox"
                 [editorOptions]="{
                     stylingMode: 'outlined',
-                    placeholder: 'Phone...',
+                    placeholder: 'Price...',
                   }"
               >
               </dxi-item>
               <dxi-item
-                dataField="Fax"
+                dataField="stock"
                 [colSpan]="2"
-                [label]="{ text: 'Fax' }"
+                [label]="{ text: 'Stock' }"
+                editorType="dxNumberBox"
                 [editorOptions]="{
                     stylingMode: 'outlined',
-                    placeholder: 'Fax...',
+                    placeholder: 'Stock...',
                   }"
               >
               </dxi-item>
@@ -101,7 +102,7 @@
                 </button>
                 <button
                   class="btn btn-bcm waves-effect waves-light mr-1"
-                  type="submit"
+                  type="button"
                   data-size="s"
                   data-color="bcm"
                   (click)="fnSave()"

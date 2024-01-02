@@ -1,6 +1,5 @@
 
 import { HttpParams } from '@angular/common/http';
-import * as moment from 'moment-timezone';
 
 export function cloneData(data) {
   return JSON.parse(JSON.stringify(data));
@@ -166,26 +165,26 @@ export function reverseString(str: string): string {
   return str.split('').reverse().join('');
 }
 
-export function toLocalTime(date: string, formatStr: string = "DD/MM/YYYY HH:mm") {
-  if (date == null || date == "") {
-    return "";
-  }
-  let utcDate = moment.utc(date).toDate()
-  let fomated = moment(utcDate).format(formatStr);
-  return fomated;
-}
+// export function toLocalTime(date: string, formatStr: string = "DD/MM/YYYY HH:mm") {
+//   if (date == null || date == "") {
+//     return "";
+//   }
+//   let utcDate = moment.utc(date).toDate()
+//   let fomated = moment(utcDate).format(formatStr);
+//   return fomated;
+// }
 
 
 
-export function toUTCTime(date: string) {
-  let utcDate = moment(date).utc().format("YYYY-MM-DDTHH:mm:ssZ");
-  return utcDate.toString();
-}
+// export function toUTCTime(date: string) {
+//   let utcDate = moment(date).utc().format("YYYY-MM-DDTHH:mm:ssZ");
+//   return utcDate.toString();
+// }
 
-export function formatDate(date: any, formatStr: string = "DD/MM/YYYY HH:mm") {
-  let utcDate = moment(date).format(formatStr);
-  return utcDate.toString();
-}
+// export function formatDate(date: any, formatStr: string = "DD/MM/YYYY HH:mm") {
+//   let utcDate = moment(date).format(formatStr);
+//   return utcDate.toString();
+// }
 
 export function toQueryParam(filter) {
   let params = new HttpParams();

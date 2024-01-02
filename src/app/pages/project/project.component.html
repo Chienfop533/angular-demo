@@ -29,6 +29,7 @@
       [showRowLines]="false"
       [showColumnLines]="true"
       [rowAlternationEnabled]="true"
+      [allowColumnResizing]="true"
       (onRowClick)="onRowClick($event)"
     >
       <dxo-selection mode="single"></dxo-selection>
@@ -55,5 +56,5 @@
 </div>
 <app-project-action
   #modalChild
-  (sendData)="loadData($event)"
+  (loadInit)="loadData($event)"
 ></app-project-action>
