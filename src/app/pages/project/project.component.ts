@@ -14,7 +14,8 @@ export class ProjectsComponent implements OnInit {
   dataRowEdit: any;
   constructor(private projectService: ProjectService) {}
   ngOnInit() {
-    this.dataSource = this.projectService.getAllProject()
+    this.projectService.getAll().subscribe(res => {this.dataSource = res
+    })
   }
   onRowClick(e) {
     this.dataRowEdit = e.data
@@ -27,7 +28,7 @@ export class ProjectsComponent implements OnInit {
     this.modalChild.openModal(this.dataRowEdit)
   }
   fnDelete() {
-    this.dataSource = this.dataSource.filter(item => item.ID != this.dataRowEdit.ID)
+    this.dataSource = this.dataSource.filter(item => item.id != this.dataRowEdit.id)
     this.dataRowEdit = null
   }
   loadData(data) {

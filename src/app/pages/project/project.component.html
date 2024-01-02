@@ -4,18 +4,31 @@
       <button class="btn btn-bcm mr-2" (click)="fnAdd()">
         <span class="btn-label"> <i class="fa fa-plus"></i></span> Thêm
       </button>
-      <button class="btn btn-bcm mr-2" type="button" [class.disabled]="this.dataRowEdit == null" (click)="fnEdit()">
+      <button
+        class="btn btn-bcm mr-2"
+        type="button"
+        [class.disabled]="this.dataRowEdit == null"
+        (click)="fnEdit()"
+      >
         <span class="btn-label"> <i class="far fa-edit"></i></span> Sửa
       </button>
-      <button class="btn btn-bcm mr-2" type="button" [class.disabled]="this.dataRowEdit == null" (click)="fnDelete()">
+      <button
+        class="btn btn-bcm mr-2"
+        type="button"
+        [class.disabled]="this.dataRowEdit == null"
+        (click)="fnDelete()"
+      >
         <span class="btn-label"><i class="fa fa-trash"></i></span> Xóa
       </button>
     </div>
     <dx-data-grid
       id="gridContainer"
-      keyExpr="ID"
+      keyExpr="id"
       [dataSource]="dataSource"
       [showBorders]="true"
+      [showRowLines]="false"
+      [showColumnLines]="true"
+      [rowAlternationEnabled]="true"
       (onRowClick)="onRowClick($event)"
     >
       <dxo-selection mode="single"></dxo-selection>
@@ -31,13 +44,16 @@
           )"
       >
       </dxo-pager>
-      <dxi-column dataField="CompanyName" dataType="number" alignment="left" >
+      <dxi-column dataField="brand" dataType="string" alignment="left">
       </dxi-column>
-      <dxi-column dataField="City" dataType="string"> </dxi-column>
-      <dxi-column dataField="State" dataType="string"> </dxi-column>
-      <dxi-column dataField="Phone" dataType="string"> </dxi-column>
-      <dxi-column dataField="Fax" dataType="string"> </dxi-column>
+      <dxi-column dataField="title" dataType="string"> </dxi-column>
+      <dxi-column dataField="category" dataType="string"> </dxi-column>
+      <dxi-column dataField="price" dataType="number"> </dxi-column>
+      <dxi-column dataField="stock" dataType="number"> </dxi-column>
     </dx-data-grid>
   </div>
 </div>
-<app-project-action #modalChild (sendData)="loadData($event)"></app-project-action>
+<app-project-action
+  #modalChild
+  (sendData)="loadData($event)"
+></app-project-action>
