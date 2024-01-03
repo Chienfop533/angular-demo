@@ -3,6 +3,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Products } from '../../core/models/project';
 import { cloneData, objectToFormData } from '../../core/common/helper';
 import { ProjectService } from '../../core/services/project/project.service';
+import { DxFormComponent } from 'devextreme-angular';
 
 @Component({
   selector: 'app-project-action',
@@ -12,10 +13,13 @@ import { ProjectService } from '../../core/services/project/project.service';
 })
 export class ProjectActionComponent implements OnInit {
   @ViewChild('lgModal', { static: false }) childModal?: ModalDirective;
+  @ViewChild("targetForm", { static: false }) targetForm: DxFormComponent;
   @Output() loadInit = new EventEmitter<any>();
   entity: Products = new Products();
+  categoryList : string[]
   constructor(private projectService: ProjectService) {}
   ngOnInit() {
+    this.categoryList = ['smartphones', 'laptops', 'fragrances', 'skincare', 'groceries', 'home-decoration']
   }
   openModal(item: Products = null) {
     if (item != null && item.id != null) {
@@ -27,11 +31,14 @@ export class ProjectActionComponent implements OnInit {
     this.childModal.show();
   }
   fnSave() {
-    this.childModal.hide()
-    if(this.entity.id != null && this.entity != null) {
-      this.updateProduct(this.entity.id)
-    } else {
-      this.addNewProduct()
+    const validation = this.targetForm.instance.validate()
+    if(validation.isValid) {
+      if(this.entity.id != null && this.entity != null) {
+        this.updateProduct(this.entity.id)
+      } else {
+        this.addNewProduct()
+      }
+      this.childModal.hide()
     }
   }
   addNewProduct() {

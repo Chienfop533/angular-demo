@@ -23,10 +23,11 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="your-action" (submit)="fnSave()">
+        <form action="your-action" (submit)="fnSave()" >
           <dx-form
             labelLocation="left"
             id="form"
+            #targetForm
             [(formData)]="entity"
           >
             <dxi-item itemType="group" [colCount]="2">
@@ -37,8 +38,15 @@
                     stylingMode: 'outlined',
                     placeholder: 'Brand...',
                   }"
+
               >
                 <dxi-validation-rule type="required" message="Bắt buộc nhập">
+                </dxi-validation-rule>
+                <dxi-validation-rule
+                  type="stringLength"
+                  [min]="4"
+                  message="Tối thiểu 4 ký tự"
+                >
                 </dxi-validation-rule>
               </dxi-item>
               <dxi-item
@@ -54,12 +62,16 @@
               </dxi-item>
               <dxi-item
                 dataField="category"
+                editorType="dxSelectBox"
                 [label]="{ text: 'Category' }"
                 [editorOptions]="{
-                    stylingMode: 'outlined',
-                    placeholder: 'Category...',
-                  }"
+                  stylingMode: 'outlined',
+                  placeholder: 'Category...',
+                  dataSource: categoryList
+                }"
               >
+              <dxi-validation-rule type="required" message="Bắt buộc chọn">
+              </dxi-validation-rule>
               </dxi-item>
 
               <dxi-item
@@ -72,6 +84,10 @@
                     placeholder: 'Price...',
                   }"
               >
+              <dxi-validation-rule type="required" message="Bắt buộc nhập">
+              </dxi-validation-rule>
+              <dxi-validation-rule type="range" [min]="1000" message="Nhỏ nhất là 1000">
+              </dxi-validation-rule>
               </dxi-item>
               <dxi-item
                 dataField="stock"
@@ -83,6 +99,8 @@
                     placeholder: 'Stock...',
                   }"
               >
+              <dxi-validation-rule type="required" message="Bắt buộc nhập">
+              </dxi-validation-rule>
               </dxi-item>
             </dxi-item>
           </dx-form>

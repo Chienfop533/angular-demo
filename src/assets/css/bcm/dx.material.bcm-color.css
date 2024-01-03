@@ -20,7 +20,7 @@
 .dx-invalid-message > .dx-overlay-content {
   display: inline-block;
   border-width: 0;
-  padding: 10px;
+  padding: 8px;
   font-size: .85em;
   line-height: normal;
   word-wrap: break-word;
@@ -4543,8 +4543,9 @@
   color: #f44336;
 }
 .dx-invalid-message > .dx-overlay-content {
-  background-color: transparent;
-  color: #f44336;
+  background-color: #f44336;
+  color: #fff;
+  border-radius: 2px;
 }
 .dx-editor-filled .dx-invalid-message-bottom .dx-invalid-message > .dx-overlay-content,
 .dx-editor-filled .dx-invalid-message-top .dx-invalid-message > .dx-overlay-content,
@@ -4559,9 +4560,9 @@
 .dx-invalid-message-right .dx-invalid-message > .dx-overlay-content {
   padding: 0 0 0 6px;
 }
-.dx-invalid-message-bottom .dx-invalid-message > .dx-overlay-content {
+/* .dx-invalid-message-bottom .dx-invalid-message > .dx-overlay-content {
   padding: 6px 0 0;
-}
+} */
 .dx-invalid-message-left .dx-invalid-message > .dx-overlay-content {
   padding: 0 6px 0 0;
 }
