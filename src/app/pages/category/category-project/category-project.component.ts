@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-category-project',
   standalone: false,
   templateUrl: './category-project.component.html',
-  styleUrl: './category-project.component.css'
+  styleUrl: './category-project.component.css',
 })
-export class CategoryProjectComponent {
-
-}
+export class CategoryProjectComponent {}
